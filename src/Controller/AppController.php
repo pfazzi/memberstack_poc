@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Security\MemberstackUser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,6 +29,9 @@ class AppController extends AbstractController
     #[Route(path: '/app', methods: ["GET"])]
     public function app(): Response
     {
-        return $this->render('app.html.twig');
+        /** @var MemberstackUser $user */
+        $user = $this->getUser();
+
+        return $this->render('app.html.twig', ['user' => $user]);
     }
 }
