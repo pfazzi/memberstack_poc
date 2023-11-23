@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('memberstack') }}
+{% endblock %}
+
 {% block body %}
-<h1>Login</h1>
+    <h1>Login</h1>
+
+    <button id="login">Login</button>
 {% endblock %}

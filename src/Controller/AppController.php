@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SecuredController extends AbstractController
+class AppController extends AbstractController
 {
     public function __construct()
     {
@@ -17,5 +17,17 @@ class SecuredController extends AbstractController
     public function login(): Response
     {
         return $this->render('login.html.twig');
+    }
+
+    #[Route(path: '/login', methods: ["POST"])]
+    public function doLogin(): Response
+    {
+        throw new \LogicException("Should never rich this line");
+    }
+
+    #[Route(path: '/app', methods: ["GET"])]
+    public function app(): Response
+    {
+        return $this->render('app.html.twig');
     }
 }
